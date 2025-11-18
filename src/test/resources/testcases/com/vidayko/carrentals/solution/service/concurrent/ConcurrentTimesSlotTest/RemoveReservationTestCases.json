@@ -1,0 +1,53 @@
+[
+  {
+    "original": {
+      "from": 1763312400.000000000
+    },
+    "reservations": [
+      {
+        "id": "33760298-7304-4847-9909-2b1e2f5790cd",
+        "period": {
+          "fromInclusive": 1763312400.000000000,
+          "toExclusive": 1763571600.000000000
+        }
+      },
+      {
+        "id": "33760298-7304-4847-9909-2b1e2f5790ce",
+        "period": {
+          "fromInclusive": 1763312401.000000000,
+          "toExclusive": 1763571601.000000000
+        }
+      }
+      ],
+    "reservableClass": "com.vidayko.carrentals.solution.model.entry.Suv"
+  },
+  {
+    "original": {
+      "from": 1763312400.000000000
+    },
+    "reservations": [
+      {
+        "id": "33760298-7304-4847-9909-2b1e2f5790cd",
+        "period": {
+          "fromInclusive": 1763312400.000000000,
+          "toExclusive": 1763571600.000000000
+        }
+      },
+      {
+        "id": "33760298-7304-4847-9909-2b1e2f5790ce",
+        "period": {
+          "fromInclusive": 1763312401.000000000,
+          "toExclusive": 1763571601.000000000
+        }
+      },
+      {
+        "id": "33760298-7304-4847-9909-2b1e2f5790cf",
+        "period": {
+          "fromInclusive": 1763312402.000000000,
+          "toExclusive": 1763571602.000000000
+        }
+      }
+    ],
+    "reservableClass": "com.vidayko.carrentals.solution.model.entry.Suv"
+  }
+]

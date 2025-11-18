@@ -1,7 +1,7 @@
 package com.vidayko.carrentals.solution.service.concurrent;
 
 import com.vidayko.carrentals.solution.model.*;
-import com.vidayko.carrentals.solution.model.api.ReservableEnum;
+import com.vidayko.carrentals.solution.model.api.*;
 import com.vidayko.carrentals.solution.model.entry.*;
 import com.vidayko.carrentals.solution.model.time.*;
 import com.vidayko.carrentals.solution.service.*;
@@ -49,7 +49,7 @@ public final class ConcurrentRegistry implements Registry {
 
   @Override
   public Optional<Reservation> reserve(Reservable reservable, ReservationPeriod period) {
-    return timeTable.reserve(reservable.getClass(), reservable, period);
+    return timeTable.reserve(reservable, period);
   }
 
   @Override

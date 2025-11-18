@@ -13,10 +13,20 @@ import java.lang.reflect.*;
 import java.time.*;
 import java.util.*;
 
+/**
+ * <br> Car Rental System
+ * <br> Provides initialization API for limited set of cars.
+ * <br> Exposes API for car reservation and cancellation.
+ */
 public class CarRentalApplication {
 
   private final Registry registry;
 
+  /**
+   * Constructor
+   *
+   * @param inventory map of car types with quantities
+   */
   public CarRentalApplication(Map<ReservableEnum, Integer> inventory) {
     try {
       registry = new ConcurrentRegistry(inventory);
@@ -27,6 +37,15 @@ public class CarRentalApplication {
     }
   }
 
+  /**
+   * Exposes reservation API for a car of a given type starting from desired date and time for a
+   * given number of days.
+   *
+   * @param typeString   car type
+   * @param startingFrom desired date and time
+   * @param numberOfDays desired date and time
+   * @return response with status (success/failure) and reservation entity when success
+   */
   public Response<Reservation> reserve(String typeString, ZonedDateTime startingFrom,
       int numberOfDays) {
     final ReservationPeriod period = new ReservationPeriod(startingFrom,
@@ -38,6 +57,12 @@ public class CarRentalApplication {
         .orElseGet(() -> new Response<>(Status.FAILURE));
   }
 
+  /**
+   * Exposes reservation API by reservation id.
+   *
+   * @param reservationId reservation id
+   * @return response with status (success/failure) and failure cause if applicable
+   */
   public Response<String> cancelReservation(String reservationId) {
 
     try {

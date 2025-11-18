@@ -5,15 +5,14 @@ import java.time.format.*;
 import java.util.*;
 import lombok.*;
 
+@NoArgsConstructor
 public final class ReservationPeriod {
 
-  private static final int MAX_HORIZON_SLOTS = (365 * 24 * 2); // 1 year in advance
+  @Getter
+  private ZonedDateTime fromInclusive;
 
   @Getter
-  private final ZonedDateTime fromInclusive;
-
-  @Getter
-  private final ZonedDateTime toExclusive;
+  private ZonedDateTime toExclusive;
 
   public ReservationPeriod(ZonedDateTime fromInclusive, ZonedDateTime toExclusive) {
 

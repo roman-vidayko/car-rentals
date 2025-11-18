@@ -1,8 +1,8 @@
 package com.vidayko.carrentals.solution.model.api;
 
-import com.vidayko.carrentals.solution.model.entry.Hashable;
+import com.vidayko.carrentals.solution.model.entry.*;
 import java.util.*;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
 public final class Response<T>  implements Hashable{

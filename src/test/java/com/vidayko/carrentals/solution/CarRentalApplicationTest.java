@@ -17,18 +17,23 @@ class CarRentalApplicationTest {
   @Test
   public void plain_test() {
 
-    final CarRentalApplication carRentalApplication = new CarRentalApplication(Map.of(
-        SEDAN, 1,
-        SUV, 2,
-        VAN, 1));
+    final CarRentalApplication carRentalApplication = new CarRentalApplication(Map.of(SEDAN, 1));
 
     final Response<Reservation> r01 = carRentalApplication.reserve("SEDAN",
         parse("2025-11-16T12:00:00[America/Toronto]"), 2);
     Assertions.assertEquals(SUCCESS, r01.getStatus());
 
+    final Response<Reservation> r02 = carRentalApplication.reserve("SEDAN",
+        parse("2025-11-16T12:00:00[America/Toronto]"), 2);
+    Assertions.assertEquals(FAILURE, r02.getStatus());
+
     final Response<String> c01 = carRentalApplication.cancelReservation(
         String.valueOf(r01.getBody().getId()));
     Assertions.assertEquals(SUCCESS, c01.getStatus());
+
+    final Response<String> c03 = carRentalApplication.cancelReservation(
+        String.valueOf(r01.getBody().getId()));
+    Assertions.assertEquals(FAILURE, c03.getStatus());
   }
 
   @Test
