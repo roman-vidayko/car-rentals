@@ -1,9 +1,7 @@
 package com.vidayko.carrentals.solution.model.time;
 
-
 import java.time.ZonedDateTime;
 import java.time.format.*;
-import java.util.Locale;
 
 public class ZonedDateTimeFormatter {
 

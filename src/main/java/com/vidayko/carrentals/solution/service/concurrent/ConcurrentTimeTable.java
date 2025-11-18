@@ -19,7 +19,7 @@ public final class ConcurrentTimeTable implements TimeTable {
   private Map<UUID, Reservation> reservations = new ConcurrentHashMap<>();
 
   @Override
-  public Optional<Reservation> reserve(Class<? extends Reservable> type, Reservable reservable,
+  public Optional<Reservation> reserve(Reservable reservable,
       ReservationPeriod period) {
 
     try {
@@ -43,7 +43,7 @@ public final class ConcurrentTimeTable implements TimeTable {
       while (timesSlot.getFrom().isBefore(period.getToExclusive())) {
         timeTable.putIfAbsent(timesSlot.getFrom(), timesSlot);
         timesSlot = timeTable.get(timesSlot.getFrom());
-        timesSlot.addReservation(type, reservation);
+        timesSlot.addReservation(reservable.getClass(), reservation);
         timesSlot = timesSlot.nextTimeSlot();
       }
 
@@ -104,6 +104,7 @@ public final class ConcurrentTimeTable implements TimeTable {
       reservations.remove(id);
     } catch (Exception e) {
       log(INFO, e);
+      throw e;
     } finally {
       if (null != reservable) {
         reservable.release();

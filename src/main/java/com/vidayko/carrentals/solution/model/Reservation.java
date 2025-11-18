@@ -5,13 +5,15 @@ import com.vidayko.carrentals.solution.model.time.*;
 import java.util.*;
 import lombok.*;
 
+@NoArgsConstructor
 public class Reservation implements Hashable {
 
   @Getter
   private UUID id = UUID.randomUUID();
 
   @Getter
-  private final Reservable reservable;
+  @Setter
+  private Reservable reservable;
 
   @Setter
   @Getter

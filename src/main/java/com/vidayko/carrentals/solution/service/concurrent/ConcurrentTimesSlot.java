@@ -9,13 +9,14 @@ import java.util.*;
 import java.util.concurrent.*;
 import lombok.*;
 
+@NoArgsConstructor
 public final class ConcurrentTimesSlot implements TimesSlot, Hashable  {
 
   private final ConcurrentMap<Class<? extends Reservable>, Set<Reservation>> reserved =
       new ConcurrentHashMap<>();
 
   @Getter
-  private final ZonedDateTime from;
+  private ZonedDateTime from;
 
   private static final Duration duration = Duration.ofMinutes(30);
 

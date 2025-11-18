@@ -1,9 +1,6 @@
 package com.vidayko.carrentals.solution.model.api;
 
-import com.vidayko.carrentals.solution.model.entry.Reservable;
-import com.vidayko.carrentals.solution.model.entry.Sedan;
-import com.vidayko.carrentals.solution.model.entry.Suv;
-import com.vidayko.carrentals.solution.model.entry.Van;
+import com.vidayko.carrentals.solution.model.entry.*;
 
 public enum ReservableEnum {
 
