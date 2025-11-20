@@ -31,7 +31,7 @@ public final class ConcurrentTimeTable implements TimeTable {
                 reservable));
       }
 
-      if (getReserved(reservable.getClass(), period).contains(reservable)) {
+      if (!isAvailableForPeriod(reservable, period)) {
         throw new IllegalArgumentException(
             String.format("Can't reserve %s for %s.", reservable, period));
       }
@@ -60,6 +60,14 @@ public final class ConcurrentTimeTable implements TimeTable {
       reservable.release();
     }
 
+  }
+
+  @Override
+  public boolean isAvailableForPeriod(Reservable reservable, ReservationPeriod period) {
+    return timeTable.subMap(period.getFromInclusive(), true, period.getToExclusive(), false)
+        .values().stream()
+        .flatMap(o -> o.getReservations(reservable.getClass()).stream())
+        .noneMatch(r -> reservable.equals(r.getReservable()));
   }
 
   @Override
