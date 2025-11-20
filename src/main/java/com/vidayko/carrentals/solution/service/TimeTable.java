@@ -20,6 +20,8 @@ public interface TimeTable {
   Optional<Reservation> reserve(Reservable reservable,
       ReservationPeriod period);
 
+  boolean isAvailableForPeriod(Reservable reservable, ReservationPeriod period);
+
   /**
    * Retrieves all reservable items (by type) for specified reservation period.
    *
